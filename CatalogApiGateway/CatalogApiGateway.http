@@ -1,0 +1,23 @@
+@CatalogApiGateway_HostAddress = http://localhost:5019
+
+@CatalogApiGateway_HostAddress_https = https://localhost:7051
+
+GET {{CatalogApiGateway_HostAddress}}/apigateway/categoryInfo
+
+###
+
+
+
+GET https://localhost:7051/apigateway/totalcost
+###
+
+GET https://localhost:7051/apigateway/categoryInfo
+###
+
+GET https://localhost:7051/apigateway/limitedArticles/5
+###
+
+
+GET {{CatalogApiGateway_HostAddress_https}}/apigateway/totalcost
+
+###

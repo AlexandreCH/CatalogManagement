@@ -1,0 +1,11 @@
+@CatalogApi_HostAddress = http://localhost:5082
+
+
+GET {{CatalogApi_HostAddress}}/api/v1/Category
+
+###
+@CatalogApi_HostAddress_https = http://localhost:7149
+GET https://localhost:7149/api/v1/Category
+
+##
+
