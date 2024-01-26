@@ -1,3 +1,5 @@
+// TODO - add overall request exception handler middleware
+//
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

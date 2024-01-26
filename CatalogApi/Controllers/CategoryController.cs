@@ -1,5 +1,6 @@
 ﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
+using CatalogApi.Core.Interfaces;
 using CatalogApi.Core.Models;
 using CatalogApi.Core.Services;
 
@@ -21,19 +22,6 @@ namespace CatalogApi.Controllers
         // GET: api/v1/Category/cagegoryInfo
         [HttpGet]
         [Route("categoryInfo")]
-        public IEnumerable<Category> CategoryInfo()
-        {
-            return new Category[] {
-                new() {
-                    Id = 1,
-                    Name = "Microsoft"
-                },
-                new() {
-                    Id = 2,
-                    CategoryId = 1,
-                    Name = "HP"
-                },
-            };
-        }
+        public async Task<IEnumerable<Category>> CategoryInfo() => await _catalogService.GetCategoriesWithFullInfoAsync();
     }
 }

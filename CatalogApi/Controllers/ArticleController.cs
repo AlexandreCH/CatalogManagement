@@ -20,50 +20,19 @@ public class ArticleController : ControllerBase
     // GET: api/v1/Article/cost
     [HttpGet]
     [Route("cost")]
-    public decimal GetAllArticlesCost()
-    {
-        decimal res = 150.99m;
-
-        return res;
-    }
+    public async Task<decimal> GetAllArticlesCost() => 
+        await _catalogService.GetTotalArticleCostAsync();
 
     // GET api/v1/Article/limitedArticles/5
     [HttpGet]
     [Route("limitedArticles/{stockCountLimit:int}")]
-    public IEnumerable<Article> GetLimitedArticles(int stockCountLimit = 0)
-    {
-        return new Article[] {
-                new() {
-                    Id = 1,
-                    Name = "Microsoft",
-                    CategoryId = 1,
-                    Stock = 10,
-                    PriceBuy = 10.25m,
-                    PriceSell = 10.99m
-
-                },
-                new() {
-                    Id = 2,
-                    CategoryId = 2,
-                    Name = "HP",
-                    Stock = 10,
-                    PriceBuy = 10.25m,
-                    PriceSell = 10.99m
-                },
-            };
-    }
-
+    public async Task<IEnumerable<Article>> GetLimitedArticles(int stockCountLimit = 0) => 
+        await _catalogService.GetAllArticlesUnderStockLimitAsync(stockCountLimit);
+    
     // POST api/v1/Article/addNew
     [HttpPost]
     [Route("addNew")]
-    public Article AddNewArticle([FromBody] Article model)
-    {
-        var res = new Article
-        {
-            Id = model.Id + 10,
-        };
-
-        return res;
-    }
+    public async Task<Article> AddNewArticle([FromBody] Article model) => 
+        await _catalogService.AddNewArticleAsync(model);
 
 }
