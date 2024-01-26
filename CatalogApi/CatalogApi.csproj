@@ -14,6 +14,7 @@
   <ItemGroup>
     <Folder Include="Infrastructure\Migrations\" />
     <Folder Include="Infrastructure\Data\" />
+    <Folder Include="Infrastructure\Filters\" />
   </ItemGroup>
 
   <ItemGroup>

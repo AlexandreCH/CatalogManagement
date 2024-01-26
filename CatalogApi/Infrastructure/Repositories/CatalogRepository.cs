@@ -1,6 +1,6 @@
 ﻿namespace CatalogApi.Infrastructure.Repositories;
 
-// TODO: Add EF to be handled by Reposotory
+// TODO: Add EF to be handled by Repository
 
 public class CatalogRepository : ICatalogRepository
 {

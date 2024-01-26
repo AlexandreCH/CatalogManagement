@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics.Eventing.Reader;
 
 namespace CatalogApi.Core.Services;
 public class CatalogService : ICatalogService
@@ -7,7 +8,7 @@ public class CatalogService : ICatalogService
 
     public CatalogService(ICatalogRepository repository)
     {
-        _catalogRepository = repository;
+        _catalogRepository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
     public async Task<Category[]> GetCategoriesWithFullInfoAsync()
@@ -46,7 +47,7 @@ public class CatalogService : ICatalogService
         return articles.Select(a => a.PriceBuy * a.Stock).Sum();
     }
 
-    public async Task<Article[]> GetAllArticlesUnderStockLimitAsync(int stockLimt)
+    public async Task<Article[]> GetAllArticlesUnderStockLimitAsync(uint stockLimt)
     {
         var articles = await _catalogRepository.GetAllArticlesAsync();
 

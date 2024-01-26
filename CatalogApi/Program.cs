@@ -1,4 +1,3 @@
-// TODO - add overall request exception handler middleware
 //
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +18,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseErrorHandlingMiddleware();
 
 app.UseHttpsRedirection();
 

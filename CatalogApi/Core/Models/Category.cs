@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
-namespace CatalogApi.Core.Models;
+﻿namespace CatalogApi.Core.Models;
 public class Category
 {
     [Required]
@@ -13,6 +10,7 @@ public class Category
     public int? CategoryId { get; set; } = null;
 
     [Required]
+    [MaxLength(50)]
     public string Name { get; set; } = string.Empty;
 
     //[JsonIgnore]

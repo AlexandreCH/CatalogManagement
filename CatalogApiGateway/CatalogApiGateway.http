@@ -16,3 +16,33 @@ GET https://localhost:7051/apigateway/limitedArticles/5
 
 GET {{CatalogApiGateway_HostAddress_https}}/apigateway/totalcost
 ###
+
+### Blanc line needed after Header specs - body contains an Article
+// Post request sample
+
+POST {{CatalogApiGateway_HostAddress_https}}/apigateway/createNewArticle  HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 10,
+  "categoryId": 0,
+  "name": "Electro charger",
+  "stock": 147,
+  "priceBuy": 50.55,
+  "priceSell": 51.00  
+}
+
+###
+
+##
+// Article with Validation error on PriceSell
+{
+  "id": 10,
+  "categoryId": 0,
+  "name": "Electro charger",
+  "stock": 147,
+  "priceBuy": 50.55,
+  "priceSell": 50.00  
+}
+
+##

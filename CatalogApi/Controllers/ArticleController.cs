@@ -1,8 +1,6 @@
 ﻿// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-
 namespace CatalogApi.Controllers;
-
 
 [Route("api/v1/[controller]")]
 [ApiController]
@@ -13,8 +11,8 @@ public class ArticleController : ControllerBase
 
     public ArticleController(ICatalogService catalogService, ILogger<ArticleController> logger)
     {
-        _logger = logger;
-        _catalogService = catalogService;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _catalogService = catalogService ?? throw new ArgumentNullException(nameof(catalogService));
     }
 
     // GET: api/v1/Article/cost
@@ -26,7 +24,7 @@ public class ArticleController : ControllerBase
     // GET api/v1/Article/limitedArticles/5
     [HttpGet]
     [Route("limitedArticles/{stockCountLimit:int}")]
-    public async Task<IEnumerable<Article>> GetLimitedArticles(int stockCountLimit = 0) => 
+    public async Task<IEnumerable<Article>> GetLimitedArticles(uint stockCountLimit = 0) => 
         await _catalogService.GetAllArticlesUnderStockLimitAsync(stockCountLimit);
     
     // POST api/v1/Article/addNew
